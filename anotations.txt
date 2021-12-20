@@ -1,0 +1,10 @@
+* = qualquer arquivo (ou extensão *.js) dentro de um determinado caminho de arquivos.
+Se for usado no meio de um path de arquivo, o programa irá olhar somente um arquivo 
+de profundidade no caminho.
+Ex: /src/modules/*/entities/*.ts
+
+Caso a pasta "entities" estivesse em dois niveis de profundidade ou dentro de duas pastas,
+não seria possivel encontrar os arquivos desejados.
+
+** = mesmo conceito anterior, mas não existe a limitação de profundidade, qualquer numero de pastas,
+entre o wildcard e o arquivo desejado, não afetara o resultado final 
