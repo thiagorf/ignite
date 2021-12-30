@@ -25,8 +25,7 @@ services:
       - database_ignite
     volumes:
       - .:/usr/app
-      - /usr/app/node_modules/bcrypt/
-
+      - /usr/app/node_modules 
 volumes:
   pgdata:
     

@@ -1,3 +1,5 @@
-node_modules
 .git
 .vscode
+node_modules
+yarn.lock
+anotations.txt

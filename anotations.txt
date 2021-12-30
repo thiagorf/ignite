@@ -8,3 +8,21 @@ não seria possivel encontrar os arquivos desejados.
 
 ** = mesmo conceito anterior, mas não existe a limitação de profundidade, qualquer numero de pastas,
 entre o wildcard e o arquivo desejado, não afetara o resultado final 
+
+
+tsconfig-paths é necessário ao utilizar os modules alias do typescript
+
+
+
+referencedTableName: tabela a ser linkada
+referencedColumnNames: qual campo desta tabela sera referenciado
+columnNames: qual campo da tabela de origem que vai ser refletido na tabela destino
+
+foreignKeys: [
+                    {
+                        name: "FKCategoryCars",
+                        referencedTableName: "categories",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["category_id"]
+                    }
+                ]

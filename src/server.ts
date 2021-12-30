@@ -2,15 +2,17 @@ import express, { NextFunction, Request, Response } from 'express';
 import "express-async-errors";
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from './swagger.json'
-import './database';
+import createConnection from '@shared/infra/typeorm';
 import "./shared/container";
-import { router } from './routes';
-import { AppError } from './erros/appError';
+import { router } from './shared/infra/http/routes';
+import { AppError } from './shared/errors/appError';
 
 /**
  * --ignore-watch node_modules
  * ts-node-dev não olhar nessa parta caso tenha novos modulos adicionados
  */
+
+createConnection();
 
 const app = express();
 

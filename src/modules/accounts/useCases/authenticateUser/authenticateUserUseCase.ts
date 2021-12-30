@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe"
 import jwt from 'jsonwebtoken';
-import { IUserRepositories } from "../../repositories/implementations/IUsersRepositories"
+import { IUserRepositories } from "@modules/accounts/repositories/implementations/IUsersRepositories"
 import { compare } from "bcrypt";
-import { AppError } from "../../../../erros/appError";
+import { AppError } from "@shared/errors/appError";
 
 
 interface IAuthenticateRequest {
