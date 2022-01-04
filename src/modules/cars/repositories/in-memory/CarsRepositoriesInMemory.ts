@@ -1,5 +1,6 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
 import { Car } from "@modules/cars/infra/typeorm/entities/car";
+import { IQueryParam } from "@modules/cars/useCases/listAvailableCar/ListAvailableCarUseCase";
 import { ICarRepositories } from "../implementations/ICarRepositories";
 
 
@@ -41,6 +42,37 @@ class CarsRepositoriesInMemory implements ICarRepositories{
 		return car;
 	}
 
+	async listAllAvailableCars(data?: IQueryParam): Promise<Car[]> {
+
+		let cars = this.cars.filter(car => car.available === true);
+
+		if(data) {
+
+			let value: string;
+
+			for(const query in data) {
+				if(data[query]) {
+					value = data[query];
+
+					//const filteredCars = cars.filter(car => car[query] === value)
+					cars = cars.filter(car => car[query] === value)
+
+					//return filteredCars;
+				}
+			}	
+
+		}
+		
+		return cars;
+	}
+
+	async findById(car_id: string): Promise<Car> {
+		const car = this.cars.find(car => car.id === car_id);
+
+		return car;
+	}
+
+	
 }
 
 export { CarsRepositoriesInMemory }
