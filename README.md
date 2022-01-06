@@ -49,6 +49,17 @@ Utilizar o multer para upload de arquivos
 O usuário deve poder cadastrar mais de uma imagem para o mesmo carro.
 O usuário responsável pelo cadastro de carros deve ser um usuário administrador.
 
+# Exclusão de imagens
+
+**RF**
+Deve ser possivel excluir imagem de um carro
+
+**RN**
+Não sera aceito carros inexistentes
+O usuário devera estar autenticado.
+O usuário responsável pelo cadastro de carros deve ser um usuário administrador.
+
+
 # Aluguel de Carro
 
 **RF**

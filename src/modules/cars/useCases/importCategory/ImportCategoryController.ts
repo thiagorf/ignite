@@ -10,7 +10,6 @@ class ImportCategoryController {
 	{
 		const { file } = request;
 
-		console.log(file)
 		const importService = container.resolve(ImportCategoryUseCase)
 
 		await importService.execute(file);
