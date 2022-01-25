@@ -4,6 +4,7 @@ import { specificationRoutes } from "./specification.routes";
 import { userRoutes } from './user.routes';
 import { authenticationRouter } from "./authentication.routes";
 import { carRoutes } from './car.routes';
+import { rentalRoutes } from './rental.routes';
 
 const router = Router();
 
@@ -16,6 +17,7 @@ router.use("/categories", categoryRoutes);
 router.use("/specifications", specificationRoutes);
 router.use("/users", userRoutes);
 router.use("/cars", carRoutes);
+router.use("/rentals", rentalRoutes);
 router.use(authenticationRouter);
 
 
