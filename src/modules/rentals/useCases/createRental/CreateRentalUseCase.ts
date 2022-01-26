@@ -1,3 +1,4 @@
+import { ICarRepositories } from "@modules/cars/repositories/implementations/ICarRepositories";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/rentals";
 import { IRentalsRepositories } from "@modules/rentals/repositories/IRentalsRepositories";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
@@ -17,7 +18,10 @@ class CreateRentalUseCase {
 	@inject("RentalRepositories")	
 	private repositories: IRentalsRepositories,
 	@inject("DayjsDateProvider")
-	private dateProvider: IDateProvider	
+	private dateProvider: IDateProvider,
+	@inject("CarRepositories")
+	private carRepositories: ICarRepositories
+
 	) {}
 
 	async execute({ car_id, user_id, expected_return_date }: IRequest): Promise<Rental>{
@@ -38,6 +42,7 @@ class CreateRentalUseCase {
 
 		const dateNow = this.dateProvider.dateNow()	
 		const compare = this.dateProvider.compareInHours(dateNow, expected_return_date)
+
 		if(compare < minimumHour) {
 			throw new AppError("Invalid return time!");
 		}
@@ -48,6 +53,9 @@ class CreateRentalUseCase {
 			user_id,
 			expected_return_date
 		});
+
+		//Caso de uso caso o carro não exista?
+		await this.carRepositories.updateAvailable(car_id, false);
 
 		return rental;
 	}

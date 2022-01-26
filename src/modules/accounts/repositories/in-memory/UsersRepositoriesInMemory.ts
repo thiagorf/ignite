@@ -8,7 +8,7 @@ class UserRepositoriesInMemory implements IUserRepositories {
 
 	users: User[] = [];
 
-	async create(data: ICreateUserDTO): Promise<void> {
+	async create(data: ICreateUserDTO): Promise<User> {
 
 		const { name, email, password, driver_license} = data;
 
@@ -22,6 +22,8 @@ class UserRepositoriesInMemory implements IUserRepositories {
 		});
 
 		this.users.push(user);
+
+		return user;
 
 	}
 
