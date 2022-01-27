@@ -20,9 +20,10 @@ describe("Devolution Rental Use Case", () => {
 		rentalRepositoriesInMemory = new RentalsRepositoriesInMemory()
 
 		devolutionRentalUseCase = new DevolutionRentalUseCase(
+			dayJsDateProvider,
 			rentalRepositoriesInMemory, 
-			carRepositoriesInMemory, 
-			dayJsDateProvider)
+			carRepositoriesInMemory 
+			)
 	})
 
 	it("Should be able to devolve a rental", async () => {
@@ -46,7 +47,7 @@ describe("Devolution Rental Use Case", () => {
 		const newRental = await rentalRepositoriesInMemory.create({
 			car_id: car.id,
 			user_id: user.id,
-			expected_return_date: new Date("01/23/22")
+			expected_return_date: new Date("01/30/22")
 		})
 
 		const rental = await devolutionRentalUseCase.execute({id: newRental.id, user_id: user.id});

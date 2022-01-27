@@ -12,8 +12,9 @@ getConnectionOptions().then(options => {
     ...options,
   });
 });*/
+//host = "database_ignite"
 
-export default async(host = "database_ignite"): Promise<Connection> => {
+export default async(host = "localhost"): Promise<Connection> => {
   const defaultOptions = await getConnectionOptions();
 
   return createConnection(

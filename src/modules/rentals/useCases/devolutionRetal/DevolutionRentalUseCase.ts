@@ -11,12 +11,12 @@ interface IRequest {
 @injectable()
 class DevolutionRentalUseCase {
 	constructor(
+	@inject("DayjsDateProvider")
+	private dateProvider: IDateProvider,
 	@inject("RentalRepositories")
 	private repository: IRentalsRepositories,
 	@inject("CarRepositories")
-	private carRepository: ICarRepositories,
-	@inject("DayJsDateProvider")
-	private dateProvider: IDateProvider
+	private carRepository: ICarRepositories
 	)
 	{}
 
@@ -50,6 +50,8 @@ class DevolutionRentalUseCase {
 
 		rental.total = total;
 		rental.end_date = this.dateProvider.dateNow();
+
+		await this.carRepository.updateAvailable(car.id, true)
 
 		await this.repository.create(rental);
 

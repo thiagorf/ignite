@@ -14,7 +14,7 @@ class DevolutionRentalController {
 
 		const devolutionResult = await devolutionUseCase.execute({user_id, id});
 
-		return response.json(devolutionUseCase)
+		return response.json(devolutionResult)
 		
 	}
 }
