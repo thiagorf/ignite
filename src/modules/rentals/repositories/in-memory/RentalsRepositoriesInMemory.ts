@@ -1,3 +1,4 @@
+import { User } from "@modules/accounts/infra/typeorm/entities/user";
 import { IRentalRequest } from "@modules/rentals/dtos/IRentalRequest";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/rentals";
 import { IRentalsRepositories } from "../IRentalsRepositories";
@@ -40,6 +41,12 @@ class RentalsRepositoriesInMemory implements IRentalsRepositories {
 		const rental = this.rentals.find(rental => rental.id === id);
 		
 		return rental;
+	}
+
+	async findAllRentalsByUser(user_id: string): Promise<Rental[]> {
+		const rentals = this.rentals.filter(rental => rental.user_id === user_id);
+
+		return rentals
 	}
 }
 
