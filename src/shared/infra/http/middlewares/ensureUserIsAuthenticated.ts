@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from 'jsonwebtoken'
 import { AppError } from "@shared/errors/appError";
 import { UserRepositories } from "@modules/accounts/infra/typeorm/repositories/users.repositories";
+import auth from "@config/auth";
 
 interface ITokenSub {
 	sub: string;
@@ -18,7 +19,7 @@ export async function ensureUserIsAuthenticated(request: Request, response: Resp
 	const [, token] = authHeader.split(" ");
 
 	try {
-		const { sub: user_id} = verify(token, "secret") as ITokenSub;
+		const { sub: user_id} = verify(token, auth.secret_token) as ITokenSub;
 
 		const userRepositories = new UserRepositories();
 		const user = await userRepositories.findById(user_id);

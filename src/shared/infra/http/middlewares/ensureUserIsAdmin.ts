@@ -15,7 +15,7 @@ export async function ensureUserIsAdmin(request: Request, response: Response ,ne
 
 	const userIsAdmin = await userRepository.findById(id);
 
-	if(userIsAdmin) {
+	if(userIsAdmin.admin) {
 		return next();
 	}
 

@@ -52,7 +52,6 @@ describe("Devolution Rental Use Case", () => {
 
 		const rental = await devolutionRentalUseCase.execute({id: newRental.id, user_id: user.id});
 
-		console.log(rental)
 		expect(rental.total).toBeTruthy
 		expect(rental.end_date).toBeTruthy
 	})
