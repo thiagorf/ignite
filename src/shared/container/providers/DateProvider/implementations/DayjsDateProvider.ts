@@ -30,6 +30,12 @@ class DayjsDateProvider implements IDateProvider{
 
 		return date;
 	}
+
+	addHours(hours: number): Date {
+		const date = dayjs().add(hours, "hour").toDate();
+
+		return date;
+	}
 }
 
 export { DayjsDateProvider }

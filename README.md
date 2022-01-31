@@ -93,3 +93,15 @@ Deve swer possivel listar os aluguei de um usuário
 
 **RN**
 O usuário deverá estar autenticado.
+
+
+# Recuperar Senha
+
+**RF**
+Deve ser possivel recuperar a senha utilizando o email.
+O usuário deverá receber um e-mail com o passo a passo da recuperação da senha.
+o usuário dederá conseguir colocar uma nova senha.
+
+**RN**
+O usuário precisa informar uma nova senha.
+O link para a recuperação da senha deve expirar em 3 horas.
