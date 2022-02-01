@@ -36,6 +36,13 @@ class DayjsDateProvider implements IDateProvider{
 
 		return date;
 	}
+
+	checkExpiresDate(start_date: Date, end_date: Date): boolean {
+		const date =  dayjs(start_date).isBefore(end_date);
+		const date2 = dayjs(end_date).isBefore(start_date)
+		
+		return date;
+	}
 }
 
 export { DayjsDateProvider }

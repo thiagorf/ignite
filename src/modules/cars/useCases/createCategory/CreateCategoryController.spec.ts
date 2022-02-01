@@ -36,7 +36,7 @@ describe("Create Category Controller",  () => {
         await connection.runMigrations();
 
         const id = uuidv4();
-        const password = await hash("admin", 8);
+        const password = await hash("1234", 8);
 
         await connection.query(
             `INSERT INTO USERS(id, name, email, password, "admin", created_at, driver_license ) 
@@ -53,7 +53,7 @@ describe("Create Category Controller",  () => {
 	it("should be able to create a new category", async () => {
 		const tokenResponse = await request(app).post('/sessions').send({
 			email: "admin@gmail",
-			password: "admin"
+			password: "1234"
 		});
 
 		const { token } = tokenResponse.body
@@ -76,7 +76,7 @@ describe("Create Category Controller",  () => {
 	it("should not be able to create a new category with the same name", async () => {
 		const tokenResponse = await request(app).post('/sessions').send({
 			email: "admin@gmail",
-			password: "admin"
+			password: "1234"
 		});
 
 		const { token } = tokenResponse.body

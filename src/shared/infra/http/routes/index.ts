@@ -5,6 +5,7 @@ import { userRoutes } from './user.routes';
 import { authenticationRouter } from "./authentication.routes";
 import { carRoutes } from './car.routes';
 import { rentalRoutes } from './rental.routes';
+import { passwordRoutes } from './password.routes'
 
 const router = Router();
 
@@ -19,6 +20,7 @@ router.use("/users", userRoutes);
 router.use("/cars", carRoutes);
 router.use("/rentals", rentalRoutes);
 router.use(authenticationRouter);
+router.use("/password", passwordRoutes)
 
 
 export { router }

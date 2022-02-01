@@ -7,41 +7,33 @@ import { hash } from 'bcrypt';
 
 let connection: Connection;
 
-
-async function closeConnections() {
-	await connection.dropDatabase()
-	await connection.close()
-} 
-
-async function innitConnections() {
-	connection = await createConnection()
-	await connection.runMigrations()
-
-	const id = uuidv4()
-	const password = await hash("admin", 8);
-
-	await connection.query(
-		`INSERT INTO USERS(id, name, email, password, "admin", created_at, driver_license)
-		values('${id}', 'admin', 'admin@gmail', '${password}', 'true', 'now()', 'test')
-		`
-		);
-}
-
 describe("List Category Controller",  () => {
 
-	beforeAll(() => {
-		return innitConnections()
-	})
+	jest.setTimeout(10000)
 
-	afterAll(() => {
-		return closeConnections()		
+	beforeAll(async () => {
+        connection = await createConnection();
+        await connection.runMigrations();
 
-	})
+        const id = uuidv4();
+        const password = await hash("1234", 8);
+
+        await connection.query(
+            `INSERT INTO USERS(id, name, email, password, "admin", created_at, driver_license ) 
+        values('${id}', 'admin', 'admin@gmail', '${password}', true, 'now()', 'XXXXXX')
+      `
+        );
+    });
+
+    afterAll(async () => {
+        await connection.dropDatabase();
+        await connection.close();
+    });
 
 	it("should be able to list all categories", async () => {
 		const tokenResponse = await request(app).post('/sessions').send({
 			email: "admin@gmail",
-			password: "admin"
+			password: "1234"
 		});
 
 		const { token } = tokenResponse.body

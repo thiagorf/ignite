@@ -13,7 +13,7 @@ let carsRepositoriesInMemory: CarsRepositoriesInMemory
 let userRepositoriesInMemory: UserRepositoriesInMemory;
 
 describe("Create Rental", () => {
-	const dayAdd24Hours = dayjs().add(1, "day").toDate();
+	const dayAdd24Hours = dayjs().add(2, "day").toDate();
 
 	beforeEach(() => {
 		userRepositoriesInMemory = new UserRepositoriesInMemory()
