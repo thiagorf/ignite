@@ -9,7 +9,7 @@ let connection: Connection;
 
 describe("List Category Controller",  () => {
 
-	jest.setTimeout(10000)
+	jest.setTimeout(100000)
 
 	beforeAll(async () => {
         connection = await createConnection();
